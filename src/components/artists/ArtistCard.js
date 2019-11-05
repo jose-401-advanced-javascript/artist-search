@@ -12,7 +12,7 @@ const ArtistCard = ({ id, name, country, tags }) => {
     <div key={id}>
       <p>{name}</p>
       <p>{country}</p>
-
+      {tagElements}
     </div>
   );
 };
