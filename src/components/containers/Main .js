@@ -30,12 +30,13 @@ export default class Main extends Component {
     this.setState({ [target.name]: target.value });
   }
 
+
   render() {
     const { artists } = this.state;
     return (
       <>
-        <Artists artists={artists} />
         <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} query={this.state.query}/>
+        <Artists artists={artists} />
       </>
     );
   }

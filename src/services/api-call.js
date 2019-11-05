@@ -1,5 +1,5 @@
-export const getArtists = (search) => {
-  return fetch(`http://musicbrainz.org/ws/2/artist?query=${search}&fmt=json&limit=25`)
+export const getArtists = (search, page) => {
+  return fetch(`http://musicbrainz.org/ws/2/artist?query=${search}&fmt=json&limit=${page * 25}&offset=${page}`)
     .then(res => res.json())
     .then(results => {
       return results.artists.map(artist => {
