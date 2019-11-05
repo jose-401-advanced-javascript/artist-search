@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Artists from '../../components/artists/Artists';
-import Search
+import SearchForm from '../../components/artists/SearchForm';
 import { getArtists } from '../../services/api-call';
 
 export default class Main extends Component {
@@ -15,15 +15,16 @@ export default class Main extends Component {
     query: ''
   }
 
-  handleOnClick() {
+  handleSubmit() {
+    event.preventDefault();
     getArtists(this.state.query)
       .then(artists => this.setState({ artists }));
     console.log(this.state.artists);
 
   }
-
-  handleSubmit() {
-    event.preventDefault();
+   
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value })
   }
 
   render() {
@@ -31,6 +32,7 @@ export default class Main extends Component {
     return (
       <>
         <Artists artists={artists} />
+        <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} query={this.state.query}/>
       </>
     );
   }
