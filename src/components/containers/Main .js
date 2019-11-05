@@ -15,16 +15,19 @@ export default class Main extends Component {
     query: ''
   }
 
-  handleSubmit() {
+  handleSubmit = (event) => {
     event.preventDefault();
+    console.log(this.state.query);
     getArtists(this.state.query)
-      .then(artists => this.setState({ artists }));
-    console.log(this.state.artists);
+      .then(artists => {
+        this.setState({ artists });
+        console.log(this.state.artists);
+      });
 
   }
    
   handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value })
+    this.setState({ [target.name]: target.value });
   }
 
   render() {
