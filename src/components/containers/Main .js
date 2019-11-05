@@ -12,13 +12,14 @@ export default class Main extends Component {
 
   state = {
     artists: [],
-    query: ''
+    query: '',
+    page: 1
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state.query);
-    getArtists(this.state.query)
+    getArtists(this.state.query, this.state.page)
       .then(artists => {
         this.setState({ artists });
         console.log(this.state.artists);
@@ -30,6 +31,16 @@ export default class Main extends Component {
     this.setState({ [target.name]: target.value });
   }
 
+  decrementPage = () => {
+    this.setState(state => ({
+      page: state.page - 1
+    }));
+  }
+  incrementPage = () => {
+    this.setState(state => ({
+      page: state.page + 1
+    }));
+  }
 
   render() {
     const { artists } = this.state;
