@@ -6,7 +6,7 @@ const AlbumCard = ({ id, title, image }) => {
   return (
     <div key={id}>
       <p>{title}</p>
-      <img src={image} />
+      <img src={image}  />
     </div>
   );
 };
@@ -14,7 +14,7 @@ const AlbumCard = ({ id, title, image }) => {
 AlbumCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  image: PropTypes.string
+  image: PropTypes.string.isRequired
 };
 
 export default AlbumCard;

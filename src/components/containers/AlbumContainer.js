@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Albums from '../albums/Albums';
-import { getAlbums, getAlbumArt } from '../../services/api-call';
+import { getAlbums } from '../../services/api-call';
 
 export default class AlbumContainer extends Component {
 
@@ -17,19 +17,6 @@ export default class AlbumContainer extends Component {
     albums: []
   }
 
-  // addAlbumArt = (arr) => {
-  //   return Promise.all(arr.map(album => {
-  //     getAlbumArt(album.id)
-  //       .then(cover => {
-  //         return {
-  //           id: album.id,
-  //           title: album.title,
-  //           cover: cover
-  //         };
-  //       }));
-  //   }));
-  // }
-
   componentDidMount() {
     getAlbums(this.props.match.params.id)
       .then(albums => {
@@ -38,14 +25,13 @@ export default class AlbumContainer extends Component {
       });
   }
 
-
   render() {
 
     const { albums } = this.state;
 
     return (
       <div>
-        <Albums albums={albums} />
+        <Albums albums={albums} id={this.state.albums.id}/>
       </div>
     );
   }

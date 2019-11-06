@@ -23,7 +23,7 @@ Albums.propTypes = {
   albums: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string
+    image: PropTypes.string.isRequired
   }))
 };
 

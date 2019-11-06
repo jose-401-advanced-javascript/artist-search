@@ -13,11 +13,6 @@ export const getArtists = (search, page) => {
     });
 };
 
-export const getAlbumArt = (albumId) => {
-  return fetch(`http://coverartarchive.org/release/${albumId}/front`)
-    .then(res => res.json());
-};
-
 export const getAlbums = (artistId) => {
   return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`)
     .then(res => res.json())
@@ -25,9 +20,9 @@ export const getAlbums = (artistId) => {
       return results.releases.map(release => {
         return {
           id: release.id,
-          title: release.title
+          title: release.title,
+          image: release['cover-art-archive'].front ? `http://coverartarchive.org/release/${release.id}/front` : 'https://pinoyalbums.com/wp-content/uploads/2014/12/No-Album-Art-Cover.png'
         };
-
       });
     });
 };
