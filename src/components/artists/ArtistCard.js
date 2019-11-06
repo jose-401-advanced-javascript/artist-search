@@ -9,6 +9,7 @@ const ArtistCard = ({ id, name, country, tags }) => {
       <p key={i}>{tag}</p>
     );
   });
+  
   return (
     <div key={id} className={styles.ArtistCard}>
       <p>{name}</p>
