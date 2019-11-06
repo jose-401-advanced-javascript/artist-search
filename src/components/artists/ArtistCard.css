@@ -2,5 +2,6 @@
   display: flex;
   flex-direction: column;
   background-color: lightslategray;
-  list-style: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1em 0em;
 }

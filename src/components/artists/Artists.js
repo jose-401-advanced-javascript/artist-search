@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ArtistCard from './ArtistCard';
+import styles from './Artists.css';
 
 const Artists = ({ artists }) => {
 
@@ -13,7 +14,7 @@ const Artists = ({ artists }) => {
   });
 
   return (
-    <ul>
+    <ul className={styles.Artists}>
       {artistElements}
     </ul>
   );
