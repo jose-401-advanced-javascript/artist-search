@@ -4,7 +4,7 @@ import Artists from '../artists/Artists';
 import SearchForm from '../artists/SearchForm';
 import { getArtists } from '../../services/api-call';
 
-export default class Main extends Component {
+export default class ArtistContainer extends Component {
 
   static propTypes = {
     history: PropTypes.object.isRequired

@@ -1,11 +1,23 @@
 import React from 'react';
-import Main from './containers/Main ';
+import ArtistContainer from './containers/ArtistContainer ';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+import AlbumContainer from './containers/AlbumContainer';
+import Header from './'
+import Footer from './'
 
 export default function App() {
   return (
-    <>
-      <h1>Hello Music</h1>
-      <Main />
-    </>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={ArtistContainer} />
+        <Route path="/albums/:id" component={AlbumContainer} />
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
