@@ -11,5 +11,8 @@ export const getArtists = (search, page) => {
         };
       });
     });
-  // .then(res => console.log(res))
+};
+
+export const getAlbum = (artistId) => {
+  return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`);
 };
