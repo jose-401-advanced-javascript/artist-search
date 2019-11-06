@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ArtistCard from '../artists/ArtistCard';
+import { Link } from 'react-router-dom'
 
 const AlbumCard = ({ id, title, image }) => {
 
   return (
-    <div key={id}>
+    <Link to={`/albums/${id}`}>
       <p>{title}</p>
       {<img src={image}/>}
-    </div>
+    </Link>
   );
 };
 
