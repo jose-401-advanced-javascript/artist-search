@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchForm = ({ handleChange, handleSubmit, query, decrementPage, incrementPage}) => {
+const SearchForm = ({ handleChange, handleSubmit, query, decrementPage, incrementPage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" name="query" value={query} onChange={handleChange} placeholder="Search here" />
@@ -10,7 +10,7 @@ const SearchForm = ({ handleChange, handleSubmit, query, decrementPage, incremen
       <button type="button" onClick={incrementPage}>Next</button>
     </form>
   );
-}; 
+};
 
 SearchForm.propTypes = {
   handleChange: PropTypes.func,

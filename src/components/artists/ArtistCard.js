@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './ArtistCard.css';
 
 const ArtistCard = ({ id, name, country, tags }) => {
 
@@ -9,7 +10,7 @@ const ArtistCard = ({ id, name, country, tags }) => {
     );
   });
   return (
-    <div key={id}>
+    <div key={id} className={styles.ArtistCard}>
       <p>{name}</p>
       <p>{country}</p>
       {tagElements}

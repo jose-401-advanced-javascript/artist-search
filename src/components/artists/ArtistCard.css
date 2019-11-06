@@ -1,0 +1,6 @@
+.ArtistCard {
+  display: flex;
+  flex-direction: column;
+  background-color: lightslategray;
+  list-style: none;
+}

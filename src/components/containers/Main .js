@@ -23,7 +23,7 @@ export default class Main extends Component {
         this.setState({ artists });
       });
   }
-   
+
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   }
@@ -32,11 +32,19 @@ export default class Main extends Component {
     this.setState(state => ({
       page: state.page - 1
     }));
+    getArtists(this.state.query, this.state.page)
+      .then(artists => {
+        this.setState({ artists });
+      });
   }
   incrementPage = () => {
     this.setState(state => ({
       page: state.page + 1
     }));
+    getArtists(this.state.query, this.state.page)
+      .then(artists => {
+        this.setState({ artists });
+      });
   }
 
   render() {
