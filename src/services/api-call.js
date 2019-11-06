@@ -1,5 +1,5 @@
 export const getArtists = (search, page) => {
-  return fetch(`http://musicbrainz.org/ws/2/artist?query=${search}&fmt=json&limit=${page * 25}&offset=${page}`)
+  return fetch(`http://musicbrainz.org/ws/2/artist?query=${search}&fmt=json&limit=25&offset=${page * 25}`)
     .then(res => res.json())
     .then(results => {
       return results.artists.map(artist => {
@@ -13,8 +13,8 @@ export const getArtists = (search, page) => {
     });
 };
 
-export const getAlbums = (artistId) => {
-  return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`)
+export const getAlbums = (artistId, page) => {
+  return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json&limit=15&offset=${page * 15}`)
     .then(res => res.json())
     .then(results => {
       return results.releases.map(release => {

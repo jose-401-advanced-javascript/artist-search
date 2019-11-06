@@ -13,7 +13,7 @@ export default class ArtistContainer extends Component {
   state = {
     artists: [],
     query: '',
-    page: 1
+    page: 0
   }
 
   handleSubmit = (event) => {
@@ -31,20 +31,23 @@ export default class ArtistContainer extends Component {
   decrementPage = () => {
     this.setState(state => ({
       page: state.page - 1
-    }));
-    getArtists(this.state.query, this.state.page)
-      .then(artists => {
-        this.setState({ artists });
-      });
+    }), () =>
+      getArtists(this.state.query, this.state.page)
+        .then(artists => {
+          this.setState({ artists });
+        })
+    );
   }
+
   incrementPage = () => {
     this.setState(state => ({
       page: state.page + 1
-    }));
-    getArtists(this.state.query, this.state.page)
-      .then(artists => {
-        this.setState({ artists });
-      });
+    }), () =>
+      getArtists(this.state.query, this.state.page)
+        .then(artists => {
+          this.setState({ artists });
+        })
+    );
   }
 
   render() {

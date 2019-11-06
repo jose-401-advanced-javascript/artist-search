@@ -14,15 +14,37 @@ export default class AlbumContainer extends Component {
   }
 
   state = {
-    albums: []
+    albums: [],
+    page: 0
   }
 
   componentDidMount() {
-    getAlbums(this.props.match.params.id)
+    getAlbums(this.props.match.params.id, this.state.page)
       .then(albums => {
         this.setState({ albums });
-        console.log(this.state.albums);
       });
+  }
+
+  decrementPage = () => {
+    this.setState(state => ({
+      page: state.page - 1
+    }), () =>
+      getAlbums(this.props.match.params.id, this.state.page)
+        .then(albums => {
+          this.setState({ albums });
+        })
+    );
+  }
+
+  incrementPage = () => {
+    this.setState(state => ({
+      page: state.page + 1
+    }), () =>
+      getAlbums(this.props.match.params.id, this.state.page)
+        .then(albums => {
+          this.setState({ albums });
+        })
+    );
   }
 
   render() {
@@ -31,7 +53,7 @@ export default class AlbumContainer extends Component {
 
     return (
       <div>
-        <Albums albums={albums} id={this.state.albums.id}/>
+        <Albums albums={albums} id={this.state.albums.id} incrementPage={this.incrementPage} decrementPage={this.decrementPage} />
       </div>
     );
   }
