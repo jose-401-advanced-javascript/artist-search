@@ -6,12 +6,11 @@ import { getAlbums } from '../../services/api-call';
 export default class AlbumContainer extends Component {
 
   static propTypes = {
-
+    match: propTypes.shape()
   }
 
   state = {
-    albums: [],
-
+    albums: []
   }
 
   componentDidMount() {

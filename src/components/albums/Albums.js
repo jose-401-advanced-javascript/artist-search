@@ -26,3 +26,5 @@ Albums.propTypes = {
     image: PropTypes.string
   }))
 };
+
+export default Albums;

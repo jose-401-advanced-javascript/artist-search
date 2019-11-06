@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ArtistCard.css';
+import { Link } from 'react-router-dom';
+
 
 const ArtistCard = ({ id, name, country, tags }) => {
 
@@ -9,10 +11,13 @@ const ArtistCard = ({ id, name, country, tags }) => {
       <p key={i}>{tag}</p>
     );
   });
-  
+
   return (
-    <div key={id} className={styles.ArtistCard}>
-      <p>{name}</p>
+    <div className={styles.ArtistCard}>
+
+      <Link to={`/albums/${id}`}>
+        <p>{name}</p>
+      </Link>
       <p>{country}</p>
       {tagElements}
     </div>

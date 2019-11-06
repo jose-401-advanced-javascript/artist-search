@@ -4,7 +4,7 @@ import './Footer';
 const Footer = () => {
   return (
     <footer>
-      <p>&copy;2019 Dylan, Kam, Alex, Jose</p>
+      <p>&copy;2019 JAK'D</p>
     </footer>
   );
 };
