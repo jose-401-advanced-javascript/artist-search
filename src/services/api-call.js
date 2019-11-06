@@ -22,7 +22,9 @@ export const getAlbums = (artistId) => {
   return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`)
     .then(res => res.json())
     .then(result => {
-      return {
+      return results.releases.map(relase => {
+        
+      }) {
         id: result.releases.id,
         title: result.releases.title
       };

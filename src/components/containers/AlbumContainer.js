@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import Albums from '../albums/Albums';
+import PropTypes from 'prop-types';
+// import Albums from '../albums/Albums';
 import { getAlbums } from '../../services/api-call';
 
 export default class AlbumContainer extends Component {
 
   static propTypes = {
-    match: propTypes.shape()
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
   }
 
   state = {
@@ -14,7 +18,13 @@ export default class AlbumContainer extends Component {
   }
 
   componentDidMount() {
-    getAlbums();
+    // const artistId = this.props.match.params.id;
+    // console.log(artistId);
+    getAlbums(this.props.match.params.id)
+      .then(albums => {
+        this.setState({ albums });
+        console.log(this.state.albums);
+      });
   }
 
   render() {
@@ -23,7 +33,7 @@ export default class AlbumContainer extends Component {
 
     return (
       <div>
-        <Albums albums={albums} />
+        {/* <Albums albums={albums} /> */}
       </div>
     );
   }
