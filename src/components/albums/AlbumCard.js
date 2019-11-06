@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ArtistCard from '../artists/ArtistCard';
 
 const AlbumCard = ({ id, title, image }) => {
 
@@ -18,4 +17,4 @@ AlbumCard.propTypes = {
   image: PropTypes.string
 };
 
-export default ArtistCard;
+export default AlbumCard;

@@ -21,12 +21,13 @@ export const getAlbumArt = (albumId) => {
 export const getAlbums = (artistId) => {
   return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`)
     .then(res => res.json())
-    .then(result => {
-      return results.releases.map(relase => {
-        
-      }) {
-        id: result.releases.id,
-        title: result.releases.title
-      };
+    .then(results => {
+      return results.releases.map(release => {
+        return {
+          id: release.id,
+          title: release.title
+        };
+
+      });
     });
 };

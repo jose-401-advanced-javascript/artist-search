@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import Albums from '../albums/Albums';
+import Albums from '../albums/Albums';
 import { getAlbums } from '../../services/api-call';
 
 export default class AlbumContainer extends Component {
@@ -33,7 +33,7 @@ export default class AlbumContainer extends Component {
 
     return (
       <div>
-        {/* <Albums albums={albums} /> */}
+        <Albums albums={albums} />
       </div>
     );
   }
