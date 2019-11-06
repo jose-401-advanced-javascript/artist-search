@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Artists from '../../components/artists/Artists';
-import SearchForm from '../../components/artists/SearchForm';
+import Artists from '../artists/Artists';
+import SearchForm from '../artists/SearchForm';
 import { getArtists } from '../../services/api-call';
 
 export default class Main extends Component {
