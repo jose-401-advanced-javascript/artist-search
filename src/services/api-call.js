@@ -13,6 +13,18 @@ export const getArtists = (search, page) => {
     });
 };
 
+export const getAlbumArt = (albumId) => {
+  return fetch(`http://coverartarchive.org/release/${albumId}/front`)
+    .then
+};
+
 export const getAlbum = (artistId) => {
-  return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`);
+  return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`)
+    .then(res => res.json())
+    .then(result => {
+      return {
+        id: result.releases.id,
+        title: result.releases.title
+      };
+    });
 };
