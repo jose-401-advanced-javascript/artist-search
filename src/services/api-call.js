@@ -15,10 +15,10 @@ export const getArtists = (search, page) => {
 
 export const getAlbumArt = (albumId) => {
   return fetch(`http://coverartarchive.org/release/${albumId}/front`)
-    .then
+    .then(res => res.json());
 };
 
-export const getAlbum = (artistId) => {
+export const getAlbums = (artistId) => {
   return fetch(`http://musicbrainz.org/ws/2/release?artist=${artistId}&fmt=json`)
     .then(res => res.json())
     .then(result => {
