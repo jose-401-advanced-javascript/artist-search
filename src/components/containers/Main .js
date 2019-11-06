@@ -18,13 +18,10 @@ export default class Main extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.query);
     getArtists(this.state.query, this.state.page)
       .then(artists => {
         this.setState({ artists });
-        console.log(this.state.artists);
       });
-
   }
    
   handleChange = ({ target }) => {
@@ -46,7 +43,7 @@ export default class Main extends Component {
     const { artists } = this.state;
     return (
       <>
-        <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} query={this.state.query}/>
+        <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} query={this.state.query} incrementPage={this.incrementPage} decrementPage={this.decrementPage} />
         <Artists artists={artists} />
       </>
     );
