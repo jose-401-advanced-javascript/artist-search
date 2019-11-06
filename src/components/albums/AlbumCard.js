@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './AlbumCard.css';
 
 const AlbumCard = ({ id, title, image }) => {
 
   return (
-    <div key={id}>
+    <div key={id} className={styles.AlbumCard}>
       <p>{title}</p>
       <img src={image}  />
     </div>

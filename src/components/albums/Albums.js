@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AlbumCard from './AlbumCard';
 
-const Albums = ({ albums }) => {
+const Albums = ({ albums, incrementPage, decrementPage }) => {
 
   const albumElements = albums.map(album => {
     return (
@@ -13,9 +13,13 @@ const Albums = ({ albums }) => {
   });
 
   return (
-    <ul>
-      {albumElements}
-    </ul>
+    <>
+      <button type="button" onClick={decrementPage}>Back</button>
+      <button type="button" onClick={incrementPage}>Next</button>
+      <ul>
+        {albumElements}
+      </ul>
+    </>
   );
 };
 
@@ -23,8 +27,10 @@ Albums.propTypes = {
   albums: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired
-  }))
+    image: PropTypes.string.isRequired,
+  })),
+  incrementPage: PropTypes.func,
+  decrementPage: PropTypes.func
 };
 
 export default Albums;
