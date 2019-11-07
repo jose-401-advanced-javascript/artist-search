@@ -26,3 +26,19 @@ export const getAlbums = (artistId, page) => {
       });
     });
 };
+
+// export const getSongs = (releaseId) => {
+//   return fetch(`http://musicbrainz.org/ws/2/recording?release=${releaseId}&fmt=json`)
+//     .then(res => res.json())
+//     .then(results => {
+//       console.log(results);
+      
+//       return results.songs.map(song => {
+//         return {
+//           id: release.id,
+//           title: release.title,
+//           image: release['cover-art-archive'].front ? `http://coverartarchive.org/release/${release.id}/front` : 'https://pinoyalbums.com/wp-content/uploads/2014/12/No-Album-Art-Cover.png'
+//         };
+//       });
+//     });
+// };
