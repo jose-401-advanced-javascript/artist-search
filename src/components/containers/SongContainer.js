@@ -20,7 +20,6 @@ export default class SongsContainer extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params);
     getSongs(this.props.match.params.id)
       .then(songs => {
         this.setState({ songs });

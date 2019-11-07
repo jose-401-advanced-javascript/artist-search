@@ -18,10 +18,8 @@ export default class LyricsContainer extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params);
     getLyrics(this.props.match.params.title, this.props.match.params.name)
       .then(lyric => {
-        console.log(lyric);
         
         this.setState({ lyric });
       });
