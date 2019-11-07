@@ -15,7 +15,7 @@ const ArtistCard = ({ id, name, country, tags }) => {
   return (
     <div className={styles.ArtistCard}>
 
-      <Link to={`/albums/${id}`}>
+      <Link to={`/albums/${id}/${name}`}>
         <p>{name}</p>
       </Link>
       <p>{country}</p>

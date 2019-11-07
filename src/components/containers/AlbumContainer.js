@@ -8,7 +8,8 @@ export default class AlbumContainer extends Component {
   static propTypes = {
     match: PropTypes.shape({
       params: PropTypes.shape({
-        id: PropTypes.string.isRequired
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
       }).isRequired
     }).isRequired
   }
@@ -19,6 +20,7 @@ export default class AlbumContainer extends Component {
   }
 
   componentDidMount() {
+    // console.log(this.props.match.params);
     getAlbums(this.props.match.params.id, this.state.page)
       .then(albums => {
         this.setState({ albums });
@@ -53,7 +55,7 @@ export default class AlbumContainer extends Component {
 
     return (
       <div>
-        <Albums albums={albums} id={this.state.albums.id} incrementPage={this.incrementPage} decrementPage={this.decrementPage} />
+        <Albums albums={albums} id={this.state.albums.id} incrementPage={this.incrementPage} decrementPage={this.decrementPage} name={this.props.match.params.name} />
       </div>
     );
   }

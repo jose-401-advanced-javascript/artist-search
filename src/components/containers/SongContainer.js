@@ -6,18 +6,32 @@ import Songs from '../songs/Songs';
 export default class SongsContainer extends Component {
 
   static propTypes = {
-    history: PropTypes.object.isRequired
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        title: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
   }
 
   state = {
     songs: []
   }
 
+  componentDidMount() {
+    console.log(this.props.match.params);
+    getSongs(this.props.match.params.id)
+      .then(songs => {
+        this.setState({ songs });
+      });
+  }
+
   render() {
     const { songs } = this.state;
     return (
       <>
-        <Songs songs={songs} />
+        <Songs songs={songs} name={this.props.match.params.name} />
       </>
     );
   }

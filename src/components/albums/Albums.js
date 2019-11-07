@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AlbumCard from './AlbumCard';
 
-const Albums = ({ albums, incrementPage, decrementPage }) => {
+const Albums = ({ albums, incrementPage, decrementPage, name }) => {
 
   const albumElements = albums.map(album => {
     return (
       <li key={album.id}>
-        <AlbumCard {...album} />
+        <AlbumCard {...album} name={name} />
       </li>
     );
   });
@@ -29,6 +29,7 @@ Albums.propTypes = {
     title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
   })),
+  name: PropTypes.string.isRequired,
   incrementPage: PropTypes.func,
   decrementPage: PropTypes.func
 };
