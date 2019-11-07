@@ -39,3 +39,7 @@ export const getSongs = (releaseId) => {
       });
     });
 };
+
+export const getLyrics = (title, name) => {
+  
+}
