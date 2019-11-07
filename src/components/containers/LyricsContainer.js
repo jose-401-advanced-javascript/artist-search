@@ -21,13 +21,15 @@ export default class LyricsContainer extends Component {
     console.log(this.props.match.params);
     getLyrics(this.props.match.params.title, this.props.match.params.name)
       .then(lyric => {
+        console.log(lyric);
+        
         this.setState({ lyric });
       });
   }
 
   render() {
     return (
-      <LyricCard />
-    )
+      <LyricCard lyric={this.state.lyric.lyrics}/>
+    );
   }
 }
