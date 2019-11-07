@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Artists from '../artists/Artists';
 import SearchForm from '../artists/SearchForm';
 import { getArtists } from '../../services/api-call';
@@ -9,12 +9,23 @@ const ArtistContainer = () => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const didMountRef = useRef(false);
+
+  const getArtistsFunction = () => {
     getArtists(query, page)
       .then(artists => {
         setArtists(artists);
       });
+  };
+
+  useEffect(() => {
+    if(didMountRef.current) getArtistsFunction();
+    didMountRef.current = true;
+  }, [page]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    getArtistsFunction();
   };
 
   const handleChange = ({ target }) => {
@@ -22,25 +33,11 @@ const ArtistContainer = () => {
   };
 
   const decrementPage = () => {
-    setPage(page => ({
-      page: page - 1
-    }), () =>
-      getArtists(query, page)
-        .then(artists => {
-          setPage(artists);
-        })
-    );
+    setPage(page - 1);
   };
 
   const incrementPage = () => {
-    setPage(page => ({
-      page: page + 1
-    }), () =>
-      getArtists(query, page)
-        .then(artists => {
-          setPage(artists);
-        })
-    );
+    setPage(page + 1);
   };
 
   return (

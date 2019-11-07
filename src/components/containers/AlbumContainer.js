@@ -11,33 +11,23 @@ const AlbumContainer = () => {
 
   const { id, name } = useParams();
 
-  useEffect(() => {
+  const getAlbumsFunction = () => {
     getAlbums(id, page)
       .then(albums => {
         setAlbums(albums);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    getAlbumsFunction();
+  }, [page]);
 
   const decrementPage = () => {
-    setPage(page => ({
-      page: page - 1
-    }), () =>
-      getAlbums(id, page)
-        .then(albums => {
-          setPage(albums);
-        })
-    );
+    setPage(page - 1);
   };
 
   const incrementPage = () => {
-    setPage(page => ({
-      page: page + 1
-    }), () =>
-      getAlbums(id, page)
-        .then(albums => {
-          setPage(albums);
-        })
-    );
+    setPage(page + 1);
   };
 
   return (
