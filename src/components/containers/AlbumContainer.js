@@ -1,62 +1,59 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Albums from '../albums/Albums';
 import { getAlbums } from '../../services/api-call';
+import { useParams } from 'react-router-dom';
 
-export default class AlbumContainer extends Component {
+const AlbumContainer = () => {
 
-  static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
-  }
+  const [albums, setAlbums] = useState([]);
+  const [page, setPage] = useState(0);
 
-  state = {
-    albums: [],
-    page: 0
-  }
+  const { id, name } = useParams();
 
-  componentDidMount() {
-    getAlbums(this.props.match.params.id, this.state.page)
+  useEffect(() => {
+    getAlbums(id, page)
       .then(albums => {
-        this.setState({ albums });
+        setAlbums(albums);
       });
-  }
+  }, []);
 
-  decrementPage = () => {
-    this.setState(state => ({
-      page: state.page - 1
+  const decrementPage = () => {
+    setPage(page => ({
+      page: page - 1
     }), () =>
-      getAlbums(this.props.match.params.id, this.state.page)
+      getAlbums(id, page)
         .then(albums => {
-          this.setState({ albums });
+          setPage(albums);
         })
     );
-  }
+  };
 
-  incrementPage = () => {
-    this.setState(state => ({
-      page: state.page + 1
+  const incrementPage = () => {
+    setPage(page => ({
+      page: page + 1
     }), () =>
-      getAlbums(this.props.match.params.id, this.state.page)
+      getAlbums(id, page)
         .then(albums => {
-          this.setState({ albums });
+          setPage(albums);
         })
     );
-  }
+  };
 
-  render() {
+  return (
+    <div>
+      <Albums albums={albums} id={id} incrementPage={incrementPage} decrementPage={decrementPage} name={name} />
+    </div>
+  );
+};
 
-    const { albums } = this.state;
+AlbumContainer.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
+};
 
-    return (
-      <div>
-        <Albums albums={albums} id={this.state.albums.id} incrementPage={this.incrementPage} decrementPage={this.decrementPage} name={this.props.match.params.name} />
-      </div>
-    );
-  }
-
-}
+export default AlbumContainer;

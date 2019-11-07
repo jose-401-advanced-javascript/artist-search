@@ -1,37 +1,37 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getSongs } from '../../services/api-call';
 import Songs from '../songs/Songs';
+import { useParams } from 'react-router-dom';
 
-export default class SongsContainer extends Component {
+const SongContainer = () => {
 
-  static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        title: PropTypes.string,
-        name: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
-  }
+  const [songs, setSongs] = useState([]);
 
-  state = {
-    songs: []
-  }
+  const { id, name } = useParams();
 
-  componentDidMount() {
-    getSongs(this.props.match.params.id)
+  useEffect(() => {
+    getSongs(id)
       .then(songs => {
-        this.setState({ songs });
+        setSongs(songs);
       });
-  }
+  }, []);
 
-  render() {
-    const { songs } = this.state;
-    return (
-      <>
-        <Songs songs={songs} name={this.props.match.params.name} />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Songs songs={songs} name={name} />
+    </>
+  );
+};
+
+SongContainer.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      title: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+export default SongContainer;

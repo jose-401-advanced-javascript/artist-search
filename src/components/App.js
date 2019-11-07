@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistContainer from './containers/ArtistContainer ';
+import ArtistContainer from './containers/ArtistContainer';
 import {
   BrowserRouter as Router,
   Route,
