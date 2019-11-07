@@ -1,63 +1,54 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Artists from '../artists/Artists';
 import SearchForm from '../artists/SearchForm';
 import { getArtists } from '../../services/api-call';
 
-export default class ArtistContainer extends Component {
 
-  static propTypes = {
-    history: PropTypes.object.isRequired
-  }
+const ArtistContainer = () => {
+  const [artists, setArtists] = useState([]);
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(0);
 
-  state = {
-    artists: [],
-    query: '',
-    page: 0
-  }
+  const didMountRef = useRef;
 
-  handleSubmit = (event) => {
+  const getArtistsFunction = () => {
+    getArtists(query, page)
+      .then(artists => setArtists(artists));
+  };
+
+  useEffect(() => {
+    if(didMountRef.current) getArtistsFunction();
+    didMountRef.current = true;
+  }, [page]);
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    getArtists(this.state.query, this.state.page)
-      .then(artists => {
-        this.setState({ artists });
-      });
-  }
+    getArtistsFunction();
+  };
 
-  handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
-  }
+  const handleChange = ({ target }) => {
+    setQuery(target.value);
+  };
 
-  decrementPage = () => {
-    this.setState(state => ({
-      page: state.page - 1
-    }), () =>
-      getArtists(this.state.query, this.state.page)
-        .then(artists => {
-          this.setState({ artists });
-        })
-    );
-  }
+  const decrementPage = () => {
+    setPage(page - 1);
+  };
 
-  incrementPage = () => {
-    this.setState(state => ({
-      page: state.page + 1
-    }), () =>
-      getArtists(this.state.query, this.state.page)
-        .then(artists => {
-          this.setState({ artists });
-        })
-    );
-  }
+  const incrementPage = () => {
+    setPage(page + 1);
+  };
 
-  render() {
-    const { artists } = this.state;
-    return (
-      <>
-        <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} query={this.state.query} incrementPage={this.incrementPage} decrementPage={this.decrementPage} />
-        <Artists artists={artists} />
-      </>
-    );
-  }
+  return (
+    <>
+      <SearchForm handleChange={handleChange} handleSubmit={handleSubmit} query={query} incrementPage={incrementPage} decrementPage={decrementPage} />
+      <Artists artists={artists} />
+    </>
+  );
+};
 
-}
+ArtistContainer.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
+export default ArtistContainer;
