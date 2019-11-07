@@ -20,7 +20,6 @@ export default class AlbumContainer extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.match.params);
     getAlbums(this.props.match.params.id, this.state.page)
       .then(albums => {
         this.setState({ albums });

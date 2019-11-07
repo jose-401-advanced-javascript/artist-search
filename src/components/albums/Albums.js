@@ -27,9 +27,9 @@ Albums.propTypes = {
   albums: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
   })),
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   incrementPage: PropTypes.func,
   decrementPage: PropTypes.func
 };

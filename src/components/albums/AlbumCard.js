@@ -19,8 +19,8 @@ const AlbumCard = ({ id, title, image, name }) => {
 AlbumCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  image: PropTypes.string,
+  name: PropTypes.string
 };
 
 export default AlbumCard;

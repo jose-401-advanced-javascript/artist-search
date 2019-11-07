@@ -5,7 +5,7 @@ const LyricCard = ({ lyric }) => {
 
   return (
     <div>
-      <p>{lyric}</p>
+      <pre>{lyric}</pre>
     </div>
   );
 };
