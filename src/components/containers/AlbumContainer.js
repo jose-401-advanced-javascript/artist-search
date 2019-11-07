@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import Albums from '../albums/Albums';
-import { getAlbums } from '../../services/api-call';
-import { useParams } from 'react-router-dom';
+import useAlbums from '../../hooks/useAlbums';
 
 const AlbumContainer = () => {
 
-  const [albums, setAlbums] = useState([]);
   const [page, setPage] = useState(0);
-
-  const { id, name } = useParams();
-
-  const getAlbumsFunction = () => {
-    getAlbums(id, page)
-      .then(albums => {
-        setAlbums(albums);
-      });
-  };
-
-  useEffect(() => {
-    getAlbumsFunction();
-  }, [page]);
+  const { albums, name } = useAlbums(page);
 
   const decrementPage = () => {
     setPage(page - 1);
@@ -32,18 +17,9 @@ const AlbumContainer = () => {
 
   return (
     <div>
-      <Albums albums={albums} id={id} incrementPage={incrementPage} decrementPage={decrementPage} name={name} />
+      <Albums albums={albums} incrementPage={incrementPage} decrementPage={decrementPage} name={name} />
     </div>
   );
-};
-
-AlbumContainer.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
 };
 
 export default AlbumContainer;

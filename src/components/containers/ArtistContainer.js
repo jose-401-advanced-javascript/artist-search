@@ -1,27 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Artists from '../artists/Artists';
 import SearchForm from '../artists/SearchForm';
-import { getArtists } from '../../services/api-call';
+import useArtists from '../../hooks/useArtists';
 
 const ArtistContainer = () => {
 
-  const [artists, setArtists] = useState([]);
-  const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
+  const [query, setQuery] = useState('');
 
-  const didMountRef = useRef(false);
-
-  const getArtistsFunction = () => {
-    getArtists(query, page)
-      .then(artists => {
-        setArtists(artists);
-      });
-  };
-
-  useEffect(() => {
-    if(didMountRef.current) getArtistsFunction();
-    didMountRef.current = true;
-  }, [page]);
+  const { artists, getArtistsFunction } = useArtists(page, query);
 
   const handleSubmit = (event) => {
     event.preventDefault();
