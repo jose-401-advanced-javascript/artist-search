@@ -8,6 +8,7 @@ import {
 import AlbumContainer from './containers/AlbumContainer';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SongsContainer from './containers/SongContainer';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={ArtistContainer} />
         <Route path="/albums/:id" component={AlbumContainer} />
+        <Route path="/songs/:id" component={SongsContainer} />
       </Switch>
       <Footer />
     </Router>
