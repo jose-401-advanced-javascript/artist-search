@@ -49,4 +49,3 @@ const ArtistContainer = () => {
 };
 
 export default ArtistContainer;
-
