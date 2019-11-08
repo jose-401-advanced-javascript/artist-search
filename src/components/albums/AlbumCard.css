@@ -1,6 +1,16 @@
 .AlbumCard {
+  text-align: center;
+  font-size: 20px;
+  color: rgb(66, 66, 66);
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid darkgrey;
+
   img {
     height: 300px;
     width: 300px;
+  }
+
+  a {
+    text-decoration: none;
   }
 }

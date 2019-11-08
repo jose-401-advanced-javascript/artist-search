@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AlbumCard from './AlbumCard';
+import styles from './Albums.css';
 
 const Albums = ({ albums, incrementPage, decrementPage, name }) => {
 
@@ -14,12 +15,15 @@ const Albums = ({ albums, incrementPage, decrementPage, name }) => {
 
   return (
     <>
-      <button type="button" onClick={decrementPage}>Back</button>
-      <button type="button" onClick={incrementPage}>Next</button>
-      <ul>
+      <div className={styles.albumsdiv}>
+        <button className={styles.buttonBack} type="button" onClick={decrementPage}>Back</button>
+        <button className={styles.buttonForward} type="button" onClick={incrementPage}>Next</button>
+      </div>
+      <ul className={styles.Albums}>
         {albumElements}
       </ul>
     </>
+
   );
 };
 

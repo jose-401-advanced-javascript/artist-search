@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './SearchForm.css';
 
 const SearchForm = ({ handleChange, handleSubmit, query, decrementPage, incrementPage }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.SearchForm}>
       <input type="text" name="query" value={query} onChange={handleChange} placeholder="Search here" />
-      <button>Search</button>
-      <button type="button" onClick={decrementPage}>Back</button>
-      <button type="button" onClick={incrementPage}>Next</button>
+      <div className={styles.mainDiv}>
+        <button className={styles.buttonSearch}>Search</button>
+        <button className={styles.buttonBack} type="button" onClick={decrementPage}>⇦</button>
+        <button className={styles.buttonForward} type="button" onClick={incrementPage}>⇨</button>
+      </div>
     </form>
   );
 };

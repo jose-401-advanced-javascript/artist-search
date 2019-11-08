@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './AlbumCard.css';
 import { Link } from 'react-router-dom';
 
-
 const AlbumCard = ({ id, title, image, name }) => {
 
   return (
     <div key={id} className={styles.AlbumCard}>
       <Link to={`/songs/${id}/${name}`}>
-        <p>{title}</p>
+        <p className={styles.AlbumCard}>{title}</p>
       </Link>
       <img src={image} />
     </div>

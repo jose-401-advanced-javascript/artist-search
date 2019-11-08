@@ -1,0 +1,69 @@
+.SearchForm {
+  input {
+    width: 350px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
+    border: 1px solid #eee;
+    padding: 5px 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: grey
+  }
+
+  .buttonSearch {
+    margin-top: 15px;
+    margin-right: 75px;
+    text-align: center;
+    padding: 5px 30px;
+    border: grey;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  button:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .buttonBack {
+    margin-top: 15px;
+    text-align: center;
+    padding: 5px 30px;
+    margin-left: 15px;
+    border: grey;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(81, 208, 247);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
+  .buttonForward {
+    margin-top: 15px;
+    text-align: center;
+    padding: 5px 30px;
+    margin-left: 5px;
+    border: grey;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(81, 208, 247);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .mainDiv {
+    display: flex;
+    justify-content: center;
+  }
+
+}

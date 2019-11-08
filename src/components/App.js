@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SongsContainer from './containers/SongContainer';
 import LyricsContainer from './containers/LyricsContainer';
+import './App.css';
 
 export default function App() {
   return (
