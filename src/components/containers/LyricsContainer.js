@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import LyricCard from '../../components/lyrics/LyricCard';
-import { getLyrics } from '../../services/api-call';
-import { useParams } from 'react-router-dom';
+import useLyrics from '../hooks/useLyrics';
 
 const LyricsContainer = () => {
-  const [lyric, setLyric] = useState([]);
-
-  let { title } = useParams();
-  let { name } = useParams();
-
-  useEffect(() => {
-    getLyrics(title, name)
-      .then(lyric => setLyric(lyric.lyrics));
-  });
-
+  const { lyric } = useLyrics();
   return (
     <LyricCard lyric={lyric}/>
   );
