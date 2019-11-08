@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { getSongs } from '../../services/api-call';
+import React from 'react';
 import Songs from '../songs/Songs';
-import { useParams } from 'react-router-dom';
+import useRecordings from '../hooks/useRecordings';
 
 const SongsContainer = () => {
-  const [songs, setSongs] = useState([]);
-
-  let { id } = useParams();
-  let { name } = useParams();
-
-  useEffect(() => {
-    getSongs(id)
-      .then(songs => setSongs(songs));
-  });
-
+  const { songs, name } = useRecordings();
   return (
     <>
       <Songs songs={songs} name={name} />
