@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Albums from '../albums/Albums';
 import { getAlbums } from '../../services/api-call';
 import { useParams } from 'react-router-dom';
@@ -34,15 +33,6 @@ const AlbumContainer = () => {
     </div>
   );
 
-};
-
-AlbumContainer.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
 };
 
 export default AlbumContainer;

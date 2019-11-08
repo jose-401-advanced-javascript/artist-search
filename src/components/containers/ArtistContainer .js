@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import Artists from '../artists/Artists';
 import SearchForm from '../artists/SearchForm';
 import { getArtists } from '../../services/api-call';
@@ -47,8 +46,5 @@ const ArtistContainer = () => {
   );
 };
 
-ArtistContainer.propTypes = {
-  history: PropTypes.object.isRequired
-};
 
 export default ArtistContainer;
