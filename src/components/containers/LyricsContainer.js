@@ -1,33 +1,22 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import LyricCard from '../../components/lyrics/LyricCard';
 import { getLyrics } from '../../services/api-call';
+import { useParams } from 'react-router-dom';
 
-export default class LyricsContainer extends Component {
-  static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        title: PropTypes.string,
-        name: PropTypes.string.isRequired,
-      }).isRequired
-    }).isRequired
-  }
+const LyricsContainer = () => {
+  const [lyric, setLyric] = useState([]);
 
-  state = {
-    lyric: {}
-  }
+  let { title } = useParams();
+  let { name } = useParams();
 
-  componentDidMount() {
-    getLyrics(this.props.match.params.title, this.props.match.params.name)
-      .then(lyric => {
-        
-        this.setState({ lyric });
-      });
-  }
+  useEffect(() => {
+    getLyrics(title, name)
+      .then(lyric => setLyric(lyric.lyrics));
+  });
 
-  render() {
-    return (
-      <LyricCard lyric={this.state.lyric.lyrics}/>
-    );
-  }
-}
+  return (
+    <LyricCard lyric={lyric}/>
+  );
+};
+
+export default LyricsContainer;
