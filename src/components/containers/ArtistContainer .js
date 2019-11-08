@@ -10,7 +10,7 @@ const ArtistContainer = () => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
 
-  const didMountRef = useRef;
+  const didMountRef = useRef(false);
 
   const getArtistsFunction = () => {
     getArtists(query, page)
