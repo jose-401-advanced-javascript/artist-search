@@ -26,9 +26,9 @@ const ArtistCard = ({ id, name, country, tags }) => {
 
 ArtistCard.propTypes = {
   id: PropTypes.string.isRequired,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.object)
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default ArtistCard;

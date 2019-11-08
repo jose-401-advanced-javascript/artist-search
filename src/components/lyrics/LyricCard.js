@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const LyricCard = ({ lyric }) => {
-
+  
   return (
     <div>
       <pre>{lyric}</pre>
@@ -11,7 +11,7 @@ const LyricCard = ({ lyric }) => {
 };
 
 LyricCard.propTypes = {
-  lyric: PropTypes.string.isRequired
+  lyric: PropTypes.string
 };
 
 export default LyricCard;

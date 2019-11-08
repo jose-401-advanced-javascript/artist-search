@@ -42,5 +42,6 @@ export const getSongs = (releaseId) => {
 
 export const getLyrics = (title, name) => {
   return fetch(`https://api.lyrics.ovh/v1/${name}/${title}`)
-    .then(res => res.json());
+    .then(res => res.json())
+    .then(res => res.lyrics);
 };
