@@ -1,46 +1,13 @@
 import React from 'react';
 import Artists from '../artists/Artists';
 import SearchForm from '../artists/SearchForm';
-// import { getArtists } from '../../services/api-call';
-import useArtists from '../hooks/useArtists';
 import usePaging from '../hooks/usePaging';
+import useArtists from '../hooks/useArtists';
 
 
 const ArtistContainer = () => {
   const { incrementPage, decrementPage, page } = usePaging();
   const { artists, query, handleChange, handleSubmit } = useArtists(page);
-  // const [artists, setArtists] = useState([]);
-  // const [query, setQuery] = useState('');
-  // const [page, setPage] = useState(0);
-
-  // const didMountRef = useRef(false);
-
-  // const getArtistsFunction = () => {
-  //   getArtists(query, page)
-  //     .then(artists => setArtists(artists));
-  // };
-
-  // useEffect(() => {
-  //   if(didMountRef.current) getArtistsFunction();
-  //   didMountRef.current = true;
-  // }, [page]);
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   getArtistsFunction();
-  // };
-
-  // const handleChange = ({ target }) => {
-  //   setQuery(target.value);
-  // };
-
-  // const decrementPage = () => {
-  //   setPage(page - 1);
-  // };
-
-  // const incrementPage = () => {
-  //   setPage(page + 1);
-  // };
 
   return (
     <>
